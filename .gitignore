@@ -1,11 +1,9 @@
 **/*checkpoint*
 *checkpoint*
 
-**/*jpg*
-*jpg*
-
-**/*png*
-*png*
+/Data/cropped/
+/Data/extra_faces
+/Data/images
 
 **/*xml*
 *xml*
