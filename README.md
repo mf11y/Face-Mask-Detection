@@ -12,7 +12,7 @@ The data provided contains images of groups or individuals with respective XML f
 
 ## Method
 
-Convolutional Neural Networks were originally designed with image processing in mind. After various modifications on the original idea, CNNs have been used with great success for image classification problems. One of the main advantages of using a CNN over other designs is that image preprocessing is much lower and it has the ability to automatically extract features and learn from them.
+Convolutional Neural Networks were originally designed with image processing in mind. After various modifications on the original idea, CNNs have been used with great success for image classification problems. One of the main advantages of using a CNN over other designs is that image preprocessing is much simpler and it has the ability to automatically extract features and learn from them.
 
 For this project, I will be designing a small CNN to detect if a face has a mask worn or not.
 
