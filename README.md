@@ -10,6 +10,8 @@ I will be using a dataset from Kaggle ([LINK](https://www.kaggle.com/andrewmvd/f
 
 The data provided contains images of groups or individuals with respective XML files that contains coordinates and labels (mask or not) for all faces in a particular image. The XML files follow the Pascal VOC data format for object detection.
 
+Data from a Google Drive Repository(https://drive.google.com/drive/folders/1ZX7QOy6LZuTLTnsOtQk-kmKq2-69l5hu) were also used to balance the classes. 
+
 ## Method
 
 Convolutional Neural Networks were originally designed with image processing in mind. After various modifications on the original idea, CNNs have been used with great success for image classification problems. One of the main advantages of using a CNN over other designs is that image preprocessing is much simpler and it has the ability to automatically extract features and learn from them.
@@ -18,20 +20,31 @@ For this project, I will be designing a small CNN to detect if a face has a mask
 
 ## Data Cleaning/Organizing/Preprocessing
 
-1. The faces need to be extracted from the images
+These were the steps taken to preprocess each image:
+  1. Read in the XML file that an image was associated with
+  2. Parse out the section of the XML that contained labels and coordinates for faces
+  3. Extract those faces using pixel coordinates
+  4. Resize extracted faces to 50 x 50 if the original face was at least 20 x 20 in order to avoid blurry faces
+  5. Place the resized face in a folder that corresponds to its label
+ 
+After these steps, we are left with around 1500 images of faces with masks and around 300 images of faces without masks. In order to balance the classes, more pictures of faces without masks were sourced from a Google Drive repository. 
 
-Using images with their respective XML file, I extracted all faces from the image dataset. I then stored these faces in two different folders that corresponds to their labels.
+Since these pictures were purely pictures of faces, the only preprocessing step that had to be taken was to resize the images to 50 x 50. Now we have an even number of face samples with masks and without. 
 
-2. Resize the images
+Data augmentation usually would also be performed here, but I am using keras. Keras provides a module called ImageDataGenerator that performs data augmentation while training. Some options include rescaling, random rotation, width shifting, height shifting, horizontal flipping, etc.
 
-Before feeding an image to a CNN, they need to be formatted in a certain way:
-(# samples, pixel_height, pixel_width, number_of_color_channels)
+A Train/Test split of 80/20 was performed after classes were balanced.
 
-All images need to have a consistent height, width, and number of color channels. As I was extracting the faces, I was also resizing them to 50x50.
-If the original face was too small, making them bigger would produce a blurry image that most likely would not be useful for training. So I set a cutoff point; if a face was smaller than 20x20 it would not be saved for training.
+## Results
 
-## Design
+![Scores](Reports/results/scores.png "Scores")
+![False Positives](Reports/results/fp.png "False Positives")
 
+![ROC](Reports/results/roc.png "ROC")
+![False Negatives](Reports/results/fn.png "False Negatives")
 
+The False negatives images are likely due to two factors: Mask design and color.
+Unique designs are not the norm, so there is probably not enough training data to account for designs.
+The model also seems to have a hard time identifying pink masks. This is probably because of skin tone.
 
-
+The False positives are likely due to bad images. They all seem pretty blurry.
