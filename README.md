@@ -43,4 +43,8 @@ A Train/Test split of 80/20 was performed after classes were balanced.
 ![ROC](Reports/results/roc.png "ROC")
 ![False Negatives](Reports/results/fn.png "False Negatives")
 
+The False negatives images are likely due to two factors: Mask design and color.
+Unique designs are not the norm, so there is probably not enough training data to account for designs.
+The model also seems to have a hard time identifying pink masks. This is probably because of skin tone.
 
+The False positives are likely due to bad images. They all seem pretty blurry.
