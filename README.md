@@ -35,9 +35,11 @@ Data augmentation usually would also be performed here, but I am using keras. Ke
 
 A Train/Test split of 80/20 was performed after classes were balanced.
 
-
+## Results
 
 ![Scores](Reports/results/scores.png "Scores")
 ![ROC](Reports/results/roc.png "ROC")
+
 ![False Positives](Reports/results/fp.png "False Positives")
 ![False Negatives](Reports/results/fn.png "False Negatives")
+
