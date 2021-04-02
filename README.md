@@ -38,9 +38,9 @@ A Train/Test split of 80/20 was performed after classes were balanced.
 ## Results
 
 ![Scores](Reports/results/scores.png "Scores")
-![ROC](Reports/results/roc.png "ROC")
-
-![False Negatives](Reports/results/fn.png "False Negatives")
 ![False Positives](Reports/results/fp.png "False Positives")
+
+![ROC](Reports/results/roc.png "ROC")
+![False Negatives](Reports/results/fn.png "False Negatives")
 
 
